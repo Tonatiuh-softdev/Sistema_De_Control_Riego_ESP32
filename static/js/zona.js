@@ -10,15 +10,27 @@ if (zoneId !== '1' && zoneId !== '2' && zoneId !== '3' && zoneId !== '4') {
 }
 
 const imageByZone = {
-  1: { source: 'assets/monstera.svg', alt: 'Monstera de hojas grandes en un jardín' },
-  2: { source: 'assets/albahaca.svg', alt: 'Plántulas de albahaca en macetas' },
-  3: { source: 'assets/helecho.svg', alt: 'Helecho frondoso en un jardín' },
+  1: { source: 'imagenes/Monstera.webp', alt: 'Monstera de hojas grandes' },
+  2: { source: 'imagenes/Alpahaca.webp', alt: 'Planta de albahaca' },
+  3: { source: 'imagenes/Helecho.webp', alt: 'Helecho frondoso' },
+  4: { source: 'imagenes/Aloe vera.webp', alt: 'Sábila' },
+  5: { source: 'imagenes/Echeveria.webp', alt: 'Echeveria' },
+  6: { source: 'imagenes/Jade.webp', alt: 'Crassula ovata' },
+  7: { source: 'imagenes/Haworthia.webp', alt: 'Haworthia' },
+  8: { source: 'imagenes/Cactus.webp', alt: 'Cactus en general' },
+  9: { source: 'imagenes/Sansevieria.webp', alt: 'Sansevieria' },
 };
 
 const imageByPlant = {
   Monstera: imageByZone[1],
   Albahaca: imageByZone[2],
   Helecho: imageByZone[3],
+  'Aloe vera (sábila)': imageByZone[4],
+  Echeveria: imageByZone[5],
+  'Jade (Crassula ovata)': imageByZone[6],
+  Haworthia: imageByZone[7],
+  'Cactus (en general)': imageByZone[8],
+  'Sansevieria (lengua de suegra)': imageByZone[9],
 };
 
 const referenceDate = new Date();
@@ -126,7 +138,7 @@ const updatePeriod = (data, period) => {
 
 const renderDetail = (data) => {
   const [minimum, maximum] = data.rango;
-  const image = imageByPlant[data.planta];
+  const image = imageByPlant[data.planta] || { source: 'assets/plant-empty.svg', alt: `Ícono de ${data.planta}` };
   const stateClass = data.estado.toLowerCase().replaceAll(' ', '-');
   document.title = `Zona ${zoneId} | ${data.planta}`;
   setText('#detail-title', `Zona ${zoneId} · ${data.planta} · ${data.estado}`);
@@ -202,14 +214,47 @@ const setupInteractions = (data) => {
   }));
 };
 
-fetch('data/detalles-zonas.json')
-  .then((response) => {
-    if (!response.ok) throw new Error('No se pudieron cargar los detalles');
-    return response.json();
-  })
-  .then((details) => {
-    const detail = zoneId === '4'
-      ? Object.values(details).find((item) => item.planta === assignments[zoneId])
+const buildCatalogDetail = (plant, zoneNumber) => ({
+  planta: plant.planta,
+  estado: 'En rango',
+  humedad: Math.round((plant.rango[0] + plant.rango[1]) / 2),
+  rango: plant.rango,
+  cientifico: '—',
+  descripcion: plant.necesidad,
+  categoria: 'Planta disponible',
+  uso: 'Decorativo',
+  agua: 'Según necesidad',
+  temperatura: '—',
+  luz: '—',
+  cuidado: plant.necesidad,
+  fuente: 'Fuente no registrada',
+  credito: 'Fuente no registrada',
+  nodo: `Nodo ${zoneNumber} en línea`,
+  lectura: '—',
+  riego: '—',
+  alerta: '',
+  temperaturaAmbiente: '—',
+  humedadAmbiente: '—',
+  bateria: '—',
+  tiempoRango: '—',
+  horasFuera: '—',
+  tiempoRango7d: '—',
+  horasFuera7d: '—',
+  riegoDia: '0 s',
+  mililitros: '—',
+  chartToday: '44,112 180,108 315,104 450,100 570,98 692,96',
+  chartWeek: '56,120 170,114 280,108 390,104 510,100 650,98 844,96',
+});
+
+Promise.all([
+  fetch('data/detalles-zonas.json').then((response) => response.json()),
+  fetch('data/zonas.json?v=2').then((response) => response.json()),
+])
+  .then(([details, zoneData]) => {
+    const assignedPlant = assignments[zoneId];
+    const catalogPlant = zoneData.plantasDisponibles.find((item) => item.planta === assignedPlant);
+    const detail = assignedPlant
+      ? Object.values(details).find((item) => item.planta === assignedPlant) || (catalogPlant ? buildCatalogDetail(catalogPlant, zoneId) : details[zoneId])
       : details[zoneId];
     renderDetail(detail);
     setupInteractions(detail);

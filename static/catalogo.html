@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Catálogo de plantas del sistema de riego." />
+    <title>Catálogo | Sistema de riego</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css?v=2" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Sistema</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">Panel</a>
+        <a class="nav-link is-active" href="catalogo.html" aria-current="page">Catálogo</a>
+        <a class="nav-link" href="alertas.html">Alertas</a>
+        <a class="nav-link" href="construccion.html">Configuración</a>
+      </nav>
+      <div class="network-status"><span class="status-dot" aria-hidden="true"></span>Red local</div>
+    </header>
+
+    <main class="catalog-page">
+      <p class="eyebrow">Referencia de plantas</p>
+      <h1>Catálogo</h1>
+      <p class="catalog-intro">Consulta rápidamente el rango de humedad y las necesidades principales de cada planta.</p>
+      <section class="catalog-grid" id="catalog-grid" aria-live="polite"></section>
+    </main>
+    <script type="module" src="js/catalogo.js?v=2"></script>
+  </body>
+</html>

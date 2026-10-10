@@ -14,7 +14,7 @@ const createPlantOption = (plant, onAssign) => {
   const title = document.createElement('h2');
   title.textContent = plant.planta;
   const detail = document.createElement('p');
-  detail.textContent = `Rango de humedad ${plant.rango[0]}–${plant.rango[1]} %`;
+  detail.textContent = `Rango ${plant.rango[0]}–${plant.rango[1]} % · ${plant.necesidad || 'Planta disponible para asignación'}`;
   const button = document.createElement('button');
   button.className = 'button button--primary';
   button.type = 'button';
@@ -25,10 +25,10 @@ const createPlantOption = (plant, onAssign) => {
   return article;
 };
 
-fetch('data/zonas.json')
+fetch('data/zonas.json?v=3')
   .then((response) => response.json())
   .then((data) => {
-    data.zonas.filter((zone) => zone.planta).forEach((plant) => {
+    [...data.zonas.filter((zone) => zone.planta), ...data.plantasDisponibles].forEach((plant) => {
       options.append(createPlantOption(plant, (plantName) => {
         const assignments = JSON.parse(localStorage.getItem('zoneAssignments') || '{}');
         assignments[zoneId] = plantName;

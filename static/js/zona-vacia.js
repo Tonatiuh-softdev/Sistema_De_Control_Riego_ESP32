@@ -1,6 +1,6 @@
 const zoneId = new URLSearchParams(window.location.search).get('id');
 
-fetch('data/zonas.json')
+fetch('data/zonas.json?v=3')
   .then((response) => response.json())
   .then((data) => {
     const zone = data.zonas.find((item) => String(item.id) === zoneId && !item.planta);

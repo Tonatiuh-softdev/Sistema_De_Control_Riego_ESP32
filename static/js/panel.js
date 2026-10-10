@@ -135,12 +135,13 @@ const applyAssignments = (data) => {
   const assignments = JSON.parse(localStorage.getItem('zoneAssignments') || '{}');
   Object.entries(assignments).forEach(([zoneId, plantName]) => {
     const target = data.zonas.find((zone) => String(zone.id) === zoneId);
-    const source = data.zonas.find((zone) => zone.planta === plantName);
+    const source = data.zonas.find((zone) => zone.planta === plantName)
+      || data.plantasDisponibles.find((plant) => plant.planta === plantName);
     if (!target || !source) return;
     Object.assign(target, {
       planta: source.planta,
       estado: 'En rango',
-      humedad: source.humedad,
+      humedad: source.humedad ?? Math.round((source.rango[0] + source.rango[1]) / 2),
       rango: source.rango,
       imagen: source.imagen,
       alt: source.alt,
@@ -150,7 +151,7 @@ const applyAssignments = (data) => {
   return data;
 };
 
-fetch('data/zonas.json')
+fetch('data/zonas.json?v=3')
   .then((response) => {
     if (!response.ok) throw new Error('No se pudieron cargar los datos');
     return response.json();
