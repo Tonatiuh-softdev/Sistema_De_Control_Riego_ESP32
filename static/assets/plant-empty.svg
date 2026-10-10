@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Planta sin asignar">
+  <g fill="none" stroke="#9aa89f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4">
+    <path d="M31.5 53V27"/>
+    <path d="M31.5 37c-8.5 0-14-4.2-14-11.5 7.8-.4 14 2.2 14 11.5Z"/>
+    <path d="M31.5 31c0-8.5 5.5-14.5 14.5-14.5.2 8.3-4.5 14.5-14.5 14.5Z"/>
+    <path d="M31.5 53c-5.7 0-10.2-1.5-13.5-4.5"/>
+  </g>
+</svg>

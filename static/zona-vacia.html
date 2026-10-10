@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zona sin planta asignada." />
+    <title>Zona sin planta | Sistema de riego</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Sistema</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link is-active" href="index.html">Panel</a>
+        <a class="nav-link" href="construccion.html">Catálogo</a>
+        <a class="nav-link" href="construccion.html">Alertas</a>
+        <a class="nav-link" href="construccion.html">Configuración</a>
+      </nav>
+      <div class="network-status"><span class="status-dot" aria-hidden="true"></span>Red local</div>
+    </header>
+
+    <main class="empty-detail-page">
+      <section class="empty-detail-heading" aria-labelledby="empty-zone-title">
+        <div>
+          <p class="eyebrow">Panel / Detalle de zona</p>
+          <h1 id="empty-zone-title">Zona 4</h1>
+          <p>Consulta la asignación y el estado de esta zona.</p>
+          <p class="detail-meta">Última actualización 09/10/2026 10:42 · Datos locales</p>
+        </div>
+        <a class="button button--secondary" href="index.html">Volver al panel</a>
+      </section>
+
+      <p class="empty-node-status"><span class="status-dot" aria-hidden="true"></span><span id="empty-node-label">Nodo 4 en línea</span></p>
+
+      <section class="empty-zone-card detail-card" aria-labelledby="empty-card-title">
+        <img class="empty-plant-icon" src="assets/plant-empty.svg" alt="" width="68" height="68" />
+        <h2 id="empty-card-title">Sin planta asignada</h2>
+        <p>Asigna una planta para consultar su rango de humedad y habilitar las acciones de esta zona.</p>
+        <a class="button button--primary" href="construccion.html">Asignar planta</a>
+        <small>Hasta entonces, no se muestran estadísticas contra rango ni riego manual.</small>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>Raíz</span><span aria-hidden="true">·</span><span>Operación local</span><span aria-hidden="true">·</span><span>Sin inicio de sesión</span><span aria-hidden="true">·</span><span>Última actualización · 10:42</span></footer>
+    <script type="module" src="js/zona-vacia.js"></script>
+  </body>
+</html>

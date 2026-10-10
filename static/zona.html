@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Detalle de la Zona 2, Albahaca." />
+    <title>Zona 2 | Sistema de riego</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Sistema</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">Panel</a>
+        <a class="nav-link" href="construccion.html">Catálogo</a>
+        <a class="nav-link" href="construccion.html">Alertas</a>
+        <a class="nav-link" href="construccion.html">Configuración</a>
+      </nav>
+      <div class="network-status"><span class="status-dot" aria-hidden="true"></span>Red local</div>
+    </header>
+
+    <main class="detail-page">
+      <section class="detail-heading" aria-labelledby="detail-title">
+        <div>
+          <p class="eyebrow">Panel / Detalle de zona</p>
+          <h1 id="detail-title">Zona 2 · Albahaca · Seca</h1>
+          <p class="detail-subtitle">Consulta la planta y los registros de esta zona.</p>
+          <p class="detail-meta" id="detail-meta">09/10/2026 · 10:42 · Datos locales</p>
+        </div>
+        <div class="heading-actions">
+          <a class="button button--secondary" href="construccion.html">Cambiar planta</a>
+          <a class="button button--secondary" href="index.html">Volver al panel</a>
+        </div>
+      </section>
+
+      <aside class="detail-alert" id="detail-alert" role="status">
+        <strong id="alert-title">1 alerta activa · Humedad bajo rango</strong>
+        <span id="alert-detail">24 % frente al mínimo de 35 %. Desde hoy a las 10:41.</span>
+      </aside>
+
+      <section class="plant-profile detail-card" aria-labelledby="plant-title">
+        <img class="profile-image" id="profile-image" src="assets/albahaca.svg" alt="Plántulas de albahaca en macetas" width="360" height="220" />
+        <div class="photo-credit" id="photo-credit">Foto: Forest &amp; Kim Starr · CC BY 3.0 · Wikimedia Commons</div>
+        <h2 id="plant-title">Albahaca</h2>
+        <p class="scientific-name" id="plant-scientific">Ocimum basilicum</p>
+        <p id="plant-description">Hierba aromática de uso culinario. Requiere humedad moderada y luz abundante.</p>
+        <dl class="plant-facts">
+          <div><dt>Categoría</dt><dd id="plant-category">Aromática</dd></div>
+          <div><dt>Uso</dt><dd id="plant-use">Culinario</dd></div>
+          <div><dt>Necesidad de agua</dt><dd id="plant-water">Moderada</dd></div>
+          <div><dt>Rango de humedad</dt><dd id="plant-range">35–55 %</dd></div>
+          <div><dt>Rango de temperatura</dt><dd id="plant-temperature">18–30 °C</dd></div>
+          <div><dt>Luz</dt><dd id="plant-light">Abundante</dd></div>
+        </dl>
+        <div class="care-note"><strong>Notas de cuidado</strong><span id="plant-care">Mantener el sustrato húmedo sin encharcar y comprobar el drenaje.</span></div>
+        <div class="source-note"><strong>Fuente</strong><span id="plant-source">Fuente no registrada</span></div>
+      </section>
+
+      <section class="detail-top-grid">
+        <article class="plant-status detail-card">
+          <p class="card-label" id="humidity-label">Humedad del suelo · Lectura 10:41</p>
+          <p class="detail-humidity"><span id="humidity-value">24</span> <span>%</span></p>
+          <div class="humidity-range detail-range"><div class="range-track"><div class="range-safe" id="detail-range-safe" style="left: 35%; width: 20%"></div><span class="range-marker" id="detail-range-marker" style="left: 24%"></span></div><p class="range-caption" id="detail-range-caption">Rango de planta 35–55 %</p></div>
+          <h3>Evolución de hoy</h3>
+          <p class="chart-legend"><span class="legend-line"></span> Humedad · <span class="legend-band"></span> Rango 35–55 %</p>
+          <div class="chart-wrap"><svg class="chart" viewBox="0 0 720 210" role="img" aria-labelledby="today-chart-title today-chart-description"><title id="today-chart-title">Evolución de humedad de hoy</title><desc id="today-chart-description">Evolución de la humedad del suelo desde medianoche hasta la última lectura disponible.</desc><rect class="chart-band" id="today-chart-band" x="44" y="38" width="648" height="72"/><line class="chart-gridline" x1="44" y1="38" x2="692" y2="38"/><line class="chart-gridline" x1="44" y1="110" x2="692" y2="110"/><line class="chart-gridline" x1="44" y1="182" x2="692" y2="182"/><polyline class="chart-line" id="today-chart-line" points="44,116 180,123 315,132 450,144 570,147 692,166"/><text id="today-chart-value" x="694" y="160" text-anchor="end">24 %</text><g id="today-axis-labels"><text x="44" y="203">00:00</text><text x="174" y="203" text-anchor="middle">03:00</text><text x="303" y="203" text-anchor="middle">06:00</text><text x="433" y="203" text-anchor="middle">09:00</text><text x="562" y="203" text-anchor="middle">12:00</text><text x="692" y="203" text-anchor="end">15:10</text></g></svg></div>
+          <p class="chart-footnote">Hoy, 09/10/2026 · 6 lecturas · Zona 2</p>
+        </article>
+        <article class="zone-summary detail-card"><img class="summary-icon" id="summary-image" src="assets/albahaca.svg" alt="" width="360" height="220" /><h2 id="summary-plant-title">Albahaca</h2><p class="zone-state zone-state--seca" id="summary-state">Seca · Planta asignada a Zona 2</p><div class="summary-lines"><p id="summary-node">Nodo 2 en línea</p><p id="summary-reading">Última lectura · Hoy 10:41</p><p id="summary-irrigation">Último riego · Ayer 18:30</p><p id="summary-range">Rango de planta · 35–55 %</p></div></article>
+      </section>
+
+      <section class="period-section detail-card" aria-labelledby="period-title">
+        <div class="period-switch" role="group" aria-label="Periodo de lecturas"><button class="period-button is-selected" type="button" aria-pressed="true">24 horas</button><button class="period-button" type="button" aria-pressed="false">7 días</button></div>
+        <div class="period-metrics"><article><p>Tiempo en rango</p><strong id="time-in-range">65 %</strong><span>Periodo de 24 horas</span></article><article><p>Horas fuera de rango</p><strong id="time-out-range">8,4 h</strong><span>Periodo de 24 horas</span></article></div>
+        <h3 id="period-title">Humedad vs. rango por fecha</h3><p class="chart-note">La gráfica compara tus lecturas con el rango recomendado para la planta. El cambio de planta se marca cuando corresponde.</p><p class="period-chart-legend"><span><i class="legend-line" aria-hidden="true"></i><strong>Línea verde:</strong> humedad medida</span><span><i class="legend-band" aria-hidden="true"></i><strong>Banda verde:</strong> rango recomendado</span></p>
+        <div class="chart-wrap chart-wrap--wide"><svg class="chart" viewBox="0 0 900 250" role="img" aria-label="Humedad contra rango por fecha."><rect class="chart-band" id="period-chart-band" x="56" y="66" width="788" height="78"/><line class="chart-gridline" x1="56" y1="36" x2="844" y2="36"/><line class="chart-gridline" x1="56" y1="102" x2="844" y2="102"/><line class="chart-gridline" x1="56" y1="168" x2="844" y2="168"/><line class="chart-gridline" x1="56" y1="220" x2="844" y2="220"/><polyline class="chart-line" id="week-chart-line" points="56,147 170,124 280,112 390,121 510,143 650,145 844,187"/><line class="plant-change" x1="170" y1="24" x2="170" y2="220"/><text class="plant-change-label" x="180" y="28">Cambio de planta</text><text id="week-chart-value" x="844" y="181" text-anchor="end">24 %</text><g id="day-axis-labels" style="display: inline"><text x="56" y="240">00:00</text><text x="214" y="240" text-anchor="middle">03:00</text><text x="372" y="240" text-anchor="middle">06:00</text><text x="530" y="240" text-anchor="middle">09:00</text><text x="688" y="240" text-anchor="middle">12:00</text><text x="844" y="240" text-anchor="end">15:06</text></g><g id="week-axis-labels" style="display: none"><text x="56" y="240">04/10</text><text x="187" y="240" text-anchor="middle">05/10</text><text x="318" y="240" text-anchor="middle">06/10</text><text x="449" y="240" text-anchor="middle">07/10</text><text x="580" y="240" text-anchor="middle">08/10</text><text x="711" y="240" text-anchor="middle">09/10</text><text x="844" y="240" text-anchor="end">10/10</text></g></svg></div>
+        <p class="chart-footnote" id="period-chart-footnote">09/10/2026 · Periodo de 24 horas · Albahaca 35–55 %</p>
+      </section>
+
+      <section class="info-grid">
+        <article class="detail-card compact-card"><h3>Riego por día</h3><p class="date-label">08/10</p><strong id="irrigation-duration">60 s</strong><span id="irrigation-volume">120 ml · caudal 2 ml/s</span><p class="date-label">09/10</p><strong>0 s</strong><span>0 ml · sin riego registrado</span><small>Agua estimada = segundos × caudal. No es medición directa.</small></article>
+        <article class="detail-card compact-card"><h3>Condiciones y nodo</h3><dl class="condition-list"><div><dt>Temperatura ambiente</dt><dd id="ambient-temperature">24 °C</dd></div><div><dt>Humedad ambiente</dt><dd id="ambient-humidity">62 %</dd></div><div><dt>Batería del nodo</dt><dd id="node-battery">3.70 V</dd></div></dl><span id="conditions-reading">Última lectura 10:41</span></article>
+        <a class="detail-card link-card" href="construccion.html"><strong>Lecturas →</strong><span>6 registros hoy · última lectura 24 %</span></a>
+        <a class="detail-card link-card" href="construccion.html"><strong>Riegos →</strong><span>Último evento · ayer a las 18:30</span></a>
+        <article class="detail-card action-card"><h3>Riego manualmente</h3><p>La orden quedará pendiente y se ejecutará cuando el nodo despierte.</p><button class="button button--primary" id="manual-irrigation" type="button">Ordenar riego manual</button><p class="action-feedback" id="manual-feedback" aria-live="polite"></p></article>
+        <article class="detail-card action-card"><h3>Estado y asignación</h3><button class="button button--secondary" type="button">Pausar zona</button><a class="button button--secondary" href="construccion.html">Cambiar planta</a></article>
+      </section>
+
+      <section class="detail-card history-section"><div class="section-title-row"><h2>Historial reciente</h2><span>Zona 2</span></div><h3 class="history-label">Riegos</h3><div class="history-item"><strong>08/10 18:30</strong><span>60 s · 120 ml · Albahaca</span><b>Completado</b></div><div class="history-item"><strong>07/10 18:25</strong><span>60 s · 120 ml</span><b>Completado</b></div><h3 class="history-label">Alertas</h3><div class="history-item history-item--alert"><strong>09/10 10:41</strong><span>Humedad baja · 24 % · mínimo 35 %</span><b>Activa</b></div></section>
+      <section class="detail-card irrigation-states"><h2>Estados de riego</h2><div class="state-grid"><div><b>Pendiente</b><span>Orden registrada, pero aún no ejecutada. Solo disponible cancelación.</span></div><div><b>Ordenado</b><span>Orden transmitida al nodo. Ejecución aún no confirmada.</span></div><div><b>Completado</b><span>Ejecutado correctamente. No admite cancelación.</span></div><div><b>Cancelado</b><span>Anulado antes de ejecutarse. Solo visible si se canceló un pendiente.</span></div></div></section>
+    </main>
+
+    <footer class="site-footer"><span>Raíz</span><span aria-hidden="true">·</span><span>Operación local</span><span aria-hidden="true">·</span><span>Sin inicio de sesión</span><span aria-hidden="true">·</span><span>Última actualización · 10:42</span></footer>
+    <dialog class="confirm-dialog" id="irrigation-dialog"><form method="dialog"><h2>Ordenar riego manual</h2><p>Se registrará una orden pendiente para Zona 2. ¿Deseas continuar?</p><div class="dialog-actions"><button class="button button--secondary" value="cancel">Cancelar</button><button class="button button--primary" id="confirm-irrigation" value="confirm">Confirmar orden</button></div></form></dialog>
+    <script type="module" src="js/zona.js?v=3"></script>
+  </body>
+</html>

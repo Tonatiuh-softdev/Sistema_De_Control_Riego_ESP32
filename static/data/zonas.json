@@ -1,0 +1,58 @@
+{
+  "ultimaActualizacion": "2026-10-09T10:42:00",
+  "tanque": { "estado": "Normal", "detalle": "Estado del depósito" },
+  "zonas": [
+    {
+      "id": 1,
+      "planta": "Monstera",
+      "estado": "En rango",
+      "humedad": 48,
+      "rango": [40, 60],
+      "imagen": "assets/monstera.svg",
+      "alt": "Monstera de hojas grandes en un jardín",
+      "nodo": "Nodo 1 en línea",
+      "lectura": "Última lectura · 10:42",
+      "riego": "Hoy 08:15",
+      "alerta": "Sin alertas"
+    },
+    {
+      "id": 2,
+      "planta": "Albahaca",
+      "estado": "Seca",
+      "humedad": 24,
+      "rango": [35, 55],
+      "imagen": "assets/albahaca.svg",
+      "alt": "Plántulas de albahaca en macetas",
+      "nodo": "Nodo 2 en línea",
+      "lectura": "Última lectura · 10:41",
+      "riego": "Ayer 18:30",
+      "alerta": "1 alerta activa"
+    },
+    {
+      "id": 3,
+      "planta": "Helecho",
+      "estado": "Sin conexión",
+      "humedad": 58,
+      "rango": [50, 70],
+      "imagen": "assets/helecho.svg",
+      "alt": "Helecho frondoso en un jardín",
+      "nodo": "Nodo 3 desconectado",
+      "lectura": "Última lectura · 09:52",
+      "riego": "Ayer 17:20",
+      "alerta": "1 alerta activa",
+      "datoAnterior": true
+    },
+    {
+      "id": 4,
+      "planta": null,
+      "estado": "Sin planta",
+      "humedad": null,
+      "rango": null,
+      "imagen": null,
+      "nodo": "Nodo 4 en línea",
+      "lectura": "Última lectura · —",
+      "riego": "Último riego · —",
+      "alerta": "Sin alertas"
+    }
+  ]
+}
