@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Alertas activas del sistema de riego." />
+    <title>Alertas | Sistema de riego</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Sistema</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">Panel</a>
+        <a class="nav-link" href="construccion.html">Catálogo</a>
+        <a class="nav-link is-active" href="alertas.html" aria-current="page">Alertas</a>
+        <a class="nav-link" href="construccion.html">Configuración</a>
+      </nav>
+      <div class="network-status"><span class="status-dot" aria-hidden="true"></span>Red local</div>
+    </header>
+
+    <main class="alerts-page">
+      <p class="eyebrow">Monitoreo local</p>
+      <h1>Alertas</h1>
+      <p class="alerts-intro">Avisos activos de las zonas con planta asignada.</p>
+      <section class="alerts-list" id="alerts-list" aria-live="polite"></section>
+      <a class="button button--secondary" href="index.html">Volver al panel</a>
+    </main>
+
+    <script type="module" src="js/alertas.js?v=1"></script>
+  </body>
+</html>

@@ -97,13 +97,21 @@ const createZoneCard = (zone) => {
   return card;
 };
 
+const getZoneAlerts = (zone) => {
+  if (!zone.planta) return [];
+  if (zone.datoAnterior) return [`Zona ${zone.id}: nodo sin conexión`];
+  if (zone.humedad < zone.rango[0]) return [`Zona ${zone.id}: humedad baja (${zone.humedad} %)`];
+  if (zone.humedad > zone.rango[1]) return [`Zona ${zone.id}: humedad alta (${zone.humedad} %)`];
+  return [];
+};
+
 const render = (data) => {
   document.querySelector('#tank-value').textContent = data.tanque.estado;
   document.querySelector('#tank-detail').textContent = data.tanque.detalle;
-  const activeAlerts = data.zonas.filter((zone) => zone.alerta !== 'Sin alertas');
+  const activeAlerts = data.zonas.flatMap(getZoneAlerts);
   const offlineZones = data.zonas.filter((zone) => zone.datoAnterior);
   document.querySelector('#alerts-value').textContent = activeAlerts.length;
-  document.querySelector('#alerts-detail').textContent = activeAlerts.length ? 'Zonas 2 y 3' : 'Sin alertas';
+  document.querySelector('#alerts-detail').textContent = activeAlerts.length ? activeAlerts.map((alert) => alert.split(':')[0]).join(' y ') : 'Sin alertas';
   document.querySelector('#nodes-value').textContent = `${data.zonas.length - offlineZones.length} de ${data.zonas.length}`;
   document.querySelector('#nodes-detail').textContent = offlineZones.length ? 'Nodo 3 desconectado' : 'Todos conectados';
   document.querySelector('#updated-value').textContent = formatTime(data.ultimaActualizacion);
@@ -111,7 +119,14 @@ const render = (data) => {
   document.querySelector('#footer-updated').textContent = `Última actualización · ${formatTime(data.ultimaActualizacion)}`;
   data.zonas.forEach((zone) => zoneGrid.append(createZoneCard(zone)));
   if (activeAlerts.length) {
-    document.querySelector('#alert-message').textContent = 'Zona 2 está por debajo de su rango. Zona 3 no tiene conexión; su lectura corresponde a las 09:52.';
+    const messages = document.querySelector('#alert-messages');
+    activeAlerts.slice(0, 2).forEach((alert) => {
+      const message = createElement('p', '', `${alert}.`);
+      messages.append(message);
+    });
+    if (activeAlerts.length > 2) {
+      messages.append(createElement('p', '', `Hay ${activeAlerts.length - 2} aviso${activeAlerts.length - 2 === 1 ? '' : 's'} más.`));
+    }
     document.querySelector('#alert-banner').hidden = false;
   }
 };
