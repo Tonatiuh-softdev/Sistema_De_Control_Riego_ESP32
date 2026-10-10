@@ -1,6 +1,7 @@
 const zoneId = new URLSearchParams(window.location.search).get('id');
+const assignments = JSON.parse(localStorage.getItem('zoneAssignments') || '{}');
 
-if (zoneId === '4') {
+if (zoneId === '4' && !assignments[zoneId]) {
   window.location.replace(`zona-vacia.html?id=${zoneId}`);
 }
 
@@ -12,6 +13,12 @@ const imageByZone = {
   1: { source: 'assets/monstera.svg', alt: 'Monstera de hojas grandes en un jardín' },
   2: { source: 'assets/albahaca.svg', alt: 'Plántulas de albahaca en macetas' },
   3: { source: 'assets/helecho.svg', alt: 'Helecho frondoso en un jardín' },
+};
+
+const imageByPlant = {
+  Monstera: imageByZone[1],
+  Albahaca: imageByZone[2],
+  Helecho: imageByZone[3],
 };
 
 const referenceDate = new Date();
@@ -119,10 +126,11 @@ const updatePeriod = (data, period) => {
 
 const renderDetail = (data) => {
   const [minimum, maximum] = data.rango;
-  const image = imageByZone[zoneId];
+  const image = imageByPlant[data.planta];
   const stateClass = data.estado.toLowerCase().replaceAll(' ', '-');
   document.title = `Zona ${zoneId} | ${data.planta}`;
   setText('#detail-title', `Zona ${zoneId} · ${data.planta} · ${data.estado}`);
+  document.querySelector('#change-plant-link').href = `asignar.html?id=${zoneId}`;
   setText('#detail-meta', `09/10/2026 · ${data.lectura.replace('Hoy ', '')} · Datos locales`);
   setText('#plant-title', data.planta);
   setText('#summary-plant-title', data.planta);
@@ -200,8 +208,11 @@ fetch('data/detalles-zonas.json')
     return response.json();
   })
   .then((details) => {
-    renderDetail(details[zoneId]);
-    setupInteractions(details[zoneId]);
+    const detail = zoneId === '4'
+      ? Object.values(details).find((item) => item.planta === assignments[zoneId])
+      : details[zoneId];
+    renderDetail(detail);
+    setupInteractions(detail);
   })
   .catch(() => {
     setText('#detail-title', 'No se pudieron cargar los datos');

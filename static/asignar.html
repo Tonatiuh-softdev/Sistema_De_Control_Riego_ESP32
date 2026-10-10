@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Asignar una planta a una zona de riego." />
+    <title>Asignar planta | Sistema de riego</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/base.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Sistema</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">Panel</a>
+        <a class="nav-link" href="construccion.html">Catálogo</a>
+        <a class="nav-link" href="alertas.html">Alertas</a>
+        <a class="nav-link" href="construccion.html">Configuración</a>
+      </nav>
+      <div class="network-status"><span class="status-dot" aria-hidden="true"></span>Red local</div>
+    </header>
+    <main class="assign-page">
+      <p class="eyebrow">Panel / Zona <span id="assign-zone-number">4</span></p>
+      <h1>Asignar planta</h1>
+      <p class="assign-intro">Selecciona una planta para consultar su rango de humedad y activar el monitoreo de esta zona.</p>
+      <section class="plant-options" id="plant-options" aria-label="Plantas disponibles"></section>
+      <a class="button button--secondary" href="index.html">Cancelar</a>
+    </main>
+    <script type="module" src="js/asignar.js?v=1"></script>
+  </body>
+</html>

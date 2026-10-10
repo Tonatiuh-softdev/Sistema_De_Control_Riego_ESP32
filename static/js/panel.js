@@ -76,7 +76,7 @@ const createZoneCard = (zone) => {
   } else {
     content.append(createElement('p', 'empty-copy', 'Asigna una planta para consultar su rango de humedad.'));
     const assign = createElement('a', 'button button--secondary', 'Asignar planta');
-    assign.href = 'construccion.html';
+    assign.href = `asignar.html?id=${zone.id}`;
     content.append(assign);
   }
 
@@ -131,11 +131,31 @@ const render = (data) => {
   }
 };
 
+const applyAssignments = (data) => {
+  const assignments = JSON.parse(localStorage.getItem('zoneAssignments') || '{}');
+  Object.entries(assignments).forEach(([zoneId, plantName]) => {
+    const target = data.zonas.find((zone) => String(zone.id) === zoneId);
+    const source = data.zonas.find((zone) => zone.planta === plantName);
+    if (!target || !source) return;
+    Object.assign(target, {
+      planta: source.planta,
+      estado: 'En rango',
+      humedad: source.humedad,
+      rango: source.rango,
+      imagen: source.imagen,
+      alt: source.alt,
+      alerta: 'Sin alertas',
+    });
+  });
+  return data;
+};
+
 fetch('data/zonas.json')
   .then((response) => {
     if (!response.ok) throw new Error('No se pudieron cargar los datos');
     return response.json();
   })
+  .then(applyAssignments)
   .then(render)
   .catch(() => {
     zoneGrid.textContent = 'No se pudieron cargar las zonas. Intenta nuevamente.';
