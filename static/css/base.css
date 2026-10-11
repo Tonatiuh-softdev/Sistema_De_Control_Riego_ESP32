@@ -14,7 +14,7 @@
 
 * { box-sizing: border-box; }
 
-html { min-width: 320px; }
+html { min-width: 320px; scrollbar-gutter: stable; scroll-padding-top: 6rem; }
 
 body {
   margin: 0;
@@ -36,12 +36,15 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e0a43a; outline-offs
   gap: 2rem;
   background: var(--surface);
   border-bottom: 1px solid #e7e9e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .brand { color: var(--green); font-size: 1.3rem; font-weight: 700; text-decoration: none; letter-spacing: -0.02em; }
 .main-nav { display: flex; align-items: center; gap: 1.5rem; height: 100%; }
-.nav-link { min-height: 44px; display: grid; place-items: center; color: #69756f; font-size: 0.72rem; text-decoration: none; }
-.nav-link.is-active { color: var(--green); font-weight: 700; border-bottom: 2px solid var(--green); }
+.nav-link { min-height: 44px; padding-inline: 0.15rem; display: grid; place-items: center; border-bottom: 2px solid transparent; color: #69756f; font-size: 0.72rem; text-decoration: none; }
+.nav-link.is-active { color: var(--green); font-weight: 700; border-bottom-color: var(--green); }
 .network-status { justify-self: end; color: var(--green); font-size: 0.68rem; }
 .status-dot { display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.35rem; background: var(--green); border-radius: 50%; }
 
@@ -266,7 +269,8 @@ dd { margin: 0; font-size: 0.68rem; }
 
 @media (max-width: 620px) {
   .site-header { grid-template-columns: 1fr auto; gap: 0.8rem; padding: 0.75rem 1rem 0; }
-  .main-nav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; justify-content: flex-start; gap: 1.25rem; }
+  .main-nav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; justify-content: flex-start; gap: 1.5rem; }
+  html { scroll-padding-top: 8rem; }
   .network-status { grid-column: 2; grid-row: 1; }
   .dashboard { padding: 2rem 1rem; }
   .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
