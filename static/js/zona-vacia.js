@@ -1,11 +1,23 @@
-const zoneId = new URLSearchParams(window.location.search).get('id');
+// zona-vacia.js — consume /api/zonas/{id}; sin localStorage ni archivos JSON estáticos
 
-fetch('data/zonas.json?v=3')
-  .then((response) => response.json())
-  .then((data) => {
-    const zone = data.zonas.find((item) => String(item.id) === zoneId && !item.planta);
-    if (!zone) return;
-    document.title = `Zona ${zone.id} sin planta | Sistema de riego`;
-    document.querySelector('#empty-zone-title').textContent = `Zona ${zone.id}`;
-    document.querySelector('#empty-node-label').textContent = zone.nodo;
-  });
+const zoneId = new URLSearchParams(window.location.search).get('id') || '4';
+
+fetch(`/api/zonas/${zoneId}`)
+  .then((response) => {
+    if (!response.ok) throw new Error('Zona no encontrada');
+    return response.json();
+  })
+  .then((zona) => {
+    document.title = `${zona.nombre} sin planta | Sistema de riego`;
+    const titleEl = document.querySelector('#empty-zone-title');
+    if (titleEl) titleEl.textContent = zona.nombre;
+    const nodeEl = document.querySelector('#empty-node-label');
+    if (nodeEl && zona.nodo) {
+      nodeEl.textContent = `${zona.nodo.nombre} ${zona.nodo.en_linea ? 'en línea' : 'desconectado'}`;
+    }
+    const btnAssign = document.querySelector('.empty-zone-card a.button--primary');
+    if (btnAssign) {
+      btnAssign.href = `asignar.html?id=${zona.id}`;
+    }
+  })
+  .catch(() => {});
